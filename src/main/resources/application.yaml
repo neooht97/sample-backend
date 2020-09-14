@@ -1,0 +1,7 @@
+base-package: "com.sample-backend"
+
+spring:
+  data:
+    mongodb:
+      url: mongodb://localhost:27017
+      database: user
