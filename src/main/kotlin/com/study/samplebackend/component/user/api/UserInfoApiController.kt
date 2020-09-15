@@ -1,7 +1,9 @@
 package com.study.samplebackend.component.user.api
 
+import com.study.samplebackend.component.user.command.UserInfoService
 import com.study.samplebackend.component.user.entity.UserInfo
 import com.study.samplebackend.component.user.entity.UserInfoRepository
+import com.study.samplebackend.preconditions.PreconditionChain
 import com.study.samplebackend.util.ObjectStatusResource
 import com.study.samplebackend.util.createdResponse
 import com.study.samplebackend.util.deletedResponse
@@ -15,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class UserInfoApiController(
-    private val repository: UserInfoRepository
+    private val repository: UserInfoRepository,
+    private val userInfoService: UserInfoService
 ) : UserInfoApi {
     override fun userInfoBy(id: String): ResponseEntity<QueryUserResource> {
         val userInfo = repository.findById(id).orNull()
@@ -26,6 +29,10 @@ class UserInfoApiController(
     }
 
     override fun createUser(resource: CreateUserResource): ResponseEntity<ObjectStatusResource> {
+        PreconditionChain()
+            .add(preconditionsForId(resource.id))
+            .verify()
+
         val userInfo = UserInfo(
             id = resource.id,
             password = resource.password,
@@ -71,4 +78,13 @@ class UserInfoApiController(
             authority = userInfo.authority
         )
     }
+
+    private fun preconditionsForId(id: String): PreconditionChain =
+        PreconditionChain()
+            .check(id) {
+                checkIfPresent(
+                    userInfoService::isIdUnique,
+                    "User with username '$value' already exists"
+                )
+            }
 }
