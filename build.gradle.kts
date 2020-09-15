@@ -28,6 +28,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("com.google.guava:guava:29.0-jre")
+    implementation("org.springframework.boot:spring-boot-starter-hateoas")
 	implementation("io.springfox:springfox-boot-starter:3.0.0")
 	implementation("io.springfox:springfox-swagger-ui:2.9.2")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")

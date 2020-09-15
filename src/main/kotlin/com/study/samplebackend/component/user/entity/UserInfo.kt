@@ -1,4 +1,4 @@
-package com.study.samplebackend.component.user
+package com.study.samplebackend.component.user.entity
 
 data class UserInfo(
     val id: String,

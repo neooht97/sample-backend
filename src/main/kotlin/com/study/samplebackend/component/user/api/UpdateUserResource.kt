@@ -1,22 +1,21 @@
 package com.study.samplebackend.component.user.api
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 
-@ApiModel("Users")
-data class QueryUserResource(
+@ApiModel("UpdateUser")
+class UpdateUserResource(
+
     @get:ApiModelProperty(
-        value = "User ID",
-        example = "test user",
+        value = "Password",
+        example = "password",
         required = true,
         position = 0
     )
-    @JsonProperty("id")
     val password: String,
 
     @get:ApiModelProperty(
-        value = "authority for the given user",
+        value = "Authority",
         example = "admin",
         required = true,
         position = 1
