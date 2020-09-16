@@ -19,6 +19,6 @@ internal class AppConfig @Autowired constructor() {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.study.samplebackend"))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
     }
 }

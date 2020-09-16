@@ -7,9 +7,9 @@ import com.study.samplebackend.preconditions.PreconditionChain
 import com.study.samplebackend.util.ObjectStatusResource
 import com.study.samplebackend.util.createdResponse
 import com.study.samplebackend.util.deletedResponse
-import com.study.samplebackend.util.updatedResponse
 import com.study.samplebackend.util.okResponse
 import com.study.samplebackend.util.orNull
+import com.study.samplebackend.util.updatedResponse
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn
 import org.springframework.http.ResponseEntity

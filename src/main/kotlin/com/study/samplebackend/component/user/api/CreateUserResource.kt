@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 
 @ApiModel("CreateUser")
-data class CreateUserResource (
+data class CreateUserResource(
     @get:ApiModelProperty(
         value = "User ID",
         example = "test user",

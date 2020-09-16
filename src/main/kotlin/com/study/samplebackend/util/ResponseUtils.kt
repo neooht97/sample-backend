@@ -2,7 +2,6 @@ package com.study.samplebackend.util
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.springframework.hateoas.RepresentationModel
-import org.springframework.hateoas.server.mvc.ControllerLinkBuilder
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -34,7 +33,6 @@ fun createdResponse(
             linkBuilder
         )
     )
-
 }
 
 fun updatedResponse(id: Any? = null, linkBuilder: WebMvcLinkBuilder? = null) =
@@ -43,9 +41,7 @@ fun updatedResponse(id: Any? = null, linkBuilder: WebMvcLinkBuilder? = null) =
 fun deletedResponse(id: Any? = null, linkBuilder: WebMvcLinkBuilder? = null) =
     ResponseEntity.ok(createdResponse(id, ObjectStatus.DELETED, linkBuilder))
 
-
-fun <T> okResponse(responseBody: T) =
-        ResponseEntity.ok(responseBody)
+fun <T> okResponse(responseBody: T) = ResponseEntity.ok(responseBody)
 
 private fun createdResponse(
     id: Any?,

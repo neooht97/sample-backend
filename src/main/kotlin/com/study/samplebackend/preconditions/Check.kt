@@ -1,11 +1,12 @@
 package com.study.samplebackend.preconditions
 
-import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.stream.Collectors
 
-private data class Check<in T>(val precondition: (T) -> Boolean,
-                               val message: String)
+private data class Check<in T>(
+    val precondition: (T) -> Boolean,
+    val message: String
+)
 
 open class AttributeCheck<out T> internal constructor(val value: T) {
     private var checks = listOf<Check<T>>()
@@ -26,7 +27,7 @@ open class AttributeCheck<out T> internal constructor(val value: T) {
 
     internal fun violations(): List<String> {
         return checks.stream()
-            .filter{ check -> !check.precondition(value) }
+            .filter { check -> !check.precondition(value) }
             .map(Check<T>::message)
             .limit(1)
             .collect(Collectors.toList())
@@ -36,7 +37,7 @@ open class AttributeCheck<out T> internal constructor(val value: T) {
 class StringCheck internal constructor(value: String?) : AttributeCheck<String?>(value) {
     fun checkNotNullOrBlank(message: String) =
         check(
-            precondition =  { value.isNullOrBlank() },
+            precondition = { value.isNullOrBlank() },
             message = message
         )
 
