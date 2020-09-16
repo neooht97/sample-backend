@@ -1,6 +1,5 @@
 package com.study.samplebackend.component.board.api
 
-import com.study.samplebackend.component.board.query.Board
 import com.study.samplebackend.util.ObjectStatusResource
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -47,7 +46,7 @@ interface BoardApi {
         ApiResponse(code = 200, message = "Create successful"),
         ApiResponse(code = 404, message = "Create failed")
     )
-    @PostMapping("/api/v1/board/{boardName}")
+    @PostMapping("/api/v1/board")
     fun createNewBoard(
         @ApiParam(
             value = "Information of the board",
@@ -79,7 +78,7 @@ interface BoardApi {
             required = true
         )
         @RequestBody
-        resource: CreateBoardResource
+        resource: UpdateBoardResource
     ): ResponseEntity<ObjectStatusResource>
 
     @ApiOperation(
