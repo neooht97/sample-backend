@@ -1,8 +1,8 @@
 package com.study.samplebackend.component.user.api
 
 import com.study.samplebackend.component.user.command.UserInfoService
-import com.study.samplebackend.component.user.entity.UserInfo
-import com.study.samplebackend.component.user.entity.UserInfoRepository
+import com.study.samplebackend.component.user.query.UserInfo
+import com.study.samplebackend.component.user.query.UserInfoRepository
 import com.study.samplebackend.preconditions.PreconditionChain
 import com.study.samplebackend.util.ObjectStatusResource
 import com.study.samplebackend.util.createdResponse
@@ -83,7 +83,7 @@ class UserInfoApiController(
         PreconditionChain()
             .check(id) {
                 checkIfPresent(
-                    userInfoService::isIdUnique,
+                    userInfoService::isIdUniqueOrExists,
                     "User with username '$value' already exists"
                 )
             }
